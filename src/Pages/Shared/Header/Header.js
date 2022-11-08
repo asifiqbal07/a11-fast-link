@@ -17,14 +17,14 @@ const Header = () => {
                         {menuItems}
                     </ul>
                 </div>
-                <Link href='/' className="normal-case text-xl">
+                <Link href='/' className="normal-case text-xl transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 duration-300">
                     <div className='flex items-center'>
                         <img className='w-12 mr-4' src={logo} alt="" />
                         <span className='text-4xl font-bold'>Fast Link</span>
                     </div>
                 </Link>
             </div>
-            <div className="navbar-center hidden lg:flex">
+            <div className="navbar-center hidden lg:flex transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none">
                 <ul className="menu menu-horizontal p-0">
                     {menuItems}
                 </ul>
