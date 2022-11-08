@@ -2,11 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaArrowRight } from "react-icons/fa";
 
-const HomePackage = ({ pack }) => {
-    const { title, image_url, details } = pack;
-    console.log(pack);
+const HomePackage = ({ homePack }) => {
+    const { title, image_url, details } = homePack;
+    console.log(homePack);
     return (
-        <div maxLength={5}>
+        <div>
             <div className="card card-compact  bg-base-100 shadow-xl p-4  transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 duration-300 rounded-none">
                 <figure><img className='h-[250px] w-full' src={image_url} alt="Shoes" /></figure>
                 <div className="card-body">

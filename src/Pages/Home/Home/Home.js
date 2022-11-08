@@ -1,6 +1,6 @@
 import React from 'react';
 import Banner from '../Banner/Banner';
-import HomePackages from '../Package/HomePackages';
+import HomePackages from '../HomePackages/HomePackages';
 
 const Home = () => {
     return (

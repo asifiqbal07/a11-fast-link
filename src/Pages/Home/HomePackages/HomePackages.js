@@ -20,9 +20,9 @@ const HomePackages = () => {
             </div>
             
                 {
-                    packages.slice(2,5).map(pack => <HomePackage
-                        key={pack._id}
-                        pack={pack}
+                    packages.slice(2,5).map(homePack => <HomePackage
+                        key={homePack._id}
+                        homePack={homePack}
                     ></HomePackage>)
                 }
             
