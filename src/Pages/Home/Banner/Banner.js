@@ -3,8 +3,8 @@ import banner from '../../../assets/Banner.png'
 
 const Banner = () => {
     return (
-        <div className=''>
-            <div className="hero min-h-screen bg-base-200 shadow-lg mb-10 lg:rounded-3xl">
+        <div className='mb-16 m-6 lg:mx-0'>
+            <div className="hero min-h-screen bg-base-200 shadow-lg">
                 <div className="hero-content flex-col lg:flex-row">
                     <div className='lg:w-1/2 text-center lg:text-left'>
                         <h1 className="text-5xl font-bold">Your Local <span className='text-[#3078fb]'>Internet <br /> Service Provider.</span></h1>

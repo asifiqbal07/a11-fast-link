@@ -7,7 +7,7 @@ const Header = () => {
         <li><Link to='/'>Home</Link></li>
     </>
     return (
-        <div className="navbar bg-base-100 my-4 h-12">
+        <div className="navbar bg-base-100 my-4 h-12 ">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -17,10 +17,10 @@ const Header = () => {
                         {menuItems}
                     </ul>
                 </div>
-                <Link href='/' className="normal-case text-xl transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 duration-300">
+                <Link href='/' className="normal-case text-xl transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 duration-300 ">
                     <div className='flex items-center'>
-                        <img className='w-12 mr-4' src={logo} alt="" />
-                        <span className='text-4xl font-bold'>Fast Link</span>
+                        <div><img className='w-12 mr-4' src={logo} alt="" /></div>
+                        <div className='mr-5'><span className='text-4xl font-bold'>Fast Link</span></div>
                     </div>
                 </Link>
             </div>
@@ -29,7 +29,7 @@ const Header = () => {
                     {menuItems}
                 </ul>
             </div>
-            <div className="navbar-end">
+            <div className="navbar-end ">
                 <button className="btn bg-[#3078fb] border-0  hover:bg-white hover:text-[#3078fb] hover:border-[1px] hover:border-[#3078fb]">Get Started</button>
             </div>
         </div>
