@@ -5,6 +5,7 @@ import logo from '../../../assets/Logo.png'
 const Header = () => {
     const menuItems = <>
         <li><Link to='/'>Home</Link></li>
+        <li><Link to='/packages'>Packages</Link></li>
     </>
     return (
         <div className="navbar bg-base-100 my-4 h-12 ">
@@ -17,15 +18,15 @@ const Header = () => {
                         {menuItems}
                     </ul>
                 </div>
-                <Link href='/' className="normal-case text-xl transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 duration-300 ">
+                <Link to='/' className="normal-case text-xl transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 duration-300 ">
                     <div className='flex items-center'>
                         <div><img className='w-12 mr-4' src={logo} alt="" /></div>
                         <div className='mr-5'><span className='text-4xl font-bold'>Fast Link</span></div>
                     </div>
                 </Link>
             </div>
-            <div className="navbar-center hidden lg:flex transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none">
-                <ul className="menu menu-horizontal p-0">
+            <div className="navbar-center hidden lg:flex">
+                <ul className="menu menu-horizontal p-0 transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none">
                     {menuItems}
                 </ul>
             </div>
