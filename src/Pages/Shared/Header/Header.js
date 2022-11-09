@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/Logo.png'
+import { AuthContext } from '../../../context/AuthProvider';
+import { FaUser } from "react-icons/fa";
 
 const Header = () => {
+
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(e => console.error(e))
+    }
+
     const menuItems = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/packages'>Packages</Link></li>
@@ -33,6 +44,30 @@ const Header = () => {
             </div>
             <div className="navbar-end ">
                 <button className="btn bg-[#3078fb] border-0  hover:bg-white hover:text-[#3078fb] hover:border-[1px] hover:border-[#3078fb]">Get Started</button>
+
+                <ul className="menu menu-horizontal p-0 transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none">
+                    <Link to='/'>
+                        {
+                            user?.uid ?
+                                <>
+                                    <span>{user?.displayName}</span>
+                                    <button onClick={handleLogOut} className="btn bg-[#3078fb] border-0  hover:bg-white hover:text-[#3078fb] hover:border-[1px] hover:border-[#3078fb]">LogOut</button>
+                                </>
+                                :
+                                <>
+                                    <Link to='/login'>Login</Link>
+                                    <Link to='/signup'>Sign Up</Link>
+                                </>
+                        }
+
+                    </Link>
+                    <Link to='/profile'>{user?.photoURL ?
+                        <img className='rounded-full h-8' src={user?.photoURL} alt="" />
+                        :
+                        <FaUser></FaUser>
+                    }
+                    </Link>
+                </ul>
             </div>
         </div>
     );
