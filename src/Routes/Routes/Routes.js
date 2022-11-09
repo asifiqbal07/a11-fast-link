@@ -6,6 +6,7 @@ import SignUp from "../../Pages/Login/SignUp/SignUp";
 import PackageDetails from "../../Pages/Packages/PackageDetails/PackageDetails";
 import Packages from "../../Pages/Packages/Packages/Packages";
 import Profile from "../../Pages/Profile/Profile";
+import MyReviews from "../../Pages/Shared/MyReviews/MyReviews";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const routes = createBrowserRouter([
@@ -28,6 +29,10 @@ export const routes = createBrowserRouter([
             {
                 path: '/profile',
                 element: <PrivateRoute><Profile></Profile></PrivateRoute>
+            },
+            {
+                path: '/reviews',
+                element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute>
             },
             {
                 path: '/packages',

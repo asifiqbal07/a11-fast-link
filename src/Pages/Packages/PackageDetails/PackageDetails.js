@@ -1,13 +1,53 @@
-import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useLoaderData } from 'react-router-dom';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
+import { AuthContext } from '../../../context/AuthProvider';
 import { FaCheckCircle, FaStar } from 'react-icons/fa';
+import toast from 'react-hot-toast';
 
 const PackageDetails = () => {
     const packageDetails = useLoaderData();
-    const { title, price, image_url, details, speed, rating, features, review_one, review_two } = packageDetails;
-    console.log(packageDetails);
+    const { user } = useContext(AuthContext);
+
+    const { title, price, image_url, details, speed, rating, features, review_one, review_two, _id } = packageDetails;
+    // console.log(packageDetails);
+
+    const handleReview = event => {
+        event.preventDefault();
+        const form = event.target;
+        const name = user?.displayName || 'unregistered';
+        const email = user?.email || 'unregistered';
+        const customerReview = form.customerReview.value;
+
+        const review = {
+            package: _id,
+            serviceName: title,
+            price,
+            customer: name,
+            email,
+            customerReview
+        }
+
+        fetch('http://localhost:5000/reviews', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(review)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if(data.acknowledged){
+                    toast.success('Review Submitted')
+                    form.reset();
+                }
+            })
+            .catch(e => console.error(e));
+
+    }
+
     return (
         <div>
             <div className='mx-6 lg:mx-0 mb-20 mt-10'>
@@ -54,37 +94,49 @@ const PackageDetails = () => {
                 <h2 className='text-center text-3xl font-bold '>Customer say some words</h2>
                 <p className='text-center mx-auto lg:w-2/4 mt-4'>Help agencies to define their new business objectives and then create professional software.</p>
                 <div className='lg:flex mt-10'>
-                <div className='lg:w-1/2 border p-6 mx-4 lg:mx-0 my-4 lg:mr-5 rounded-xl shadow-md'>
-                    <div className='flex just mb-5'>
-                        <FaStar className='text-[#FDFF00]'></FaStar>
-                        <FaStar className='text-[#FDFF00]'></FaStar>
-                        <FaStar className='text-[#FDFF00]'></FaStar>
-                        <FaStar className='text-[#FDFF00]'></FaStar>
-                        <FaStar className='text-[#FDFF00]'></FaStar>
+                    <div className='lg:w-1/2 border p-6 mx-4 lg:mx-0 my-4 lg:mr-5 rounded-xl shadow-md'>
+                        <div className='flex just mb-5'>
+                            <FaStar className='text-[#FDFF00]'></FaStar>
+                            <FaStar className='text-[#FDFF00]'></FaStar>
+                            <FaStar className='text-[#FDFF00]'></FaStar>
+                            <FaStar className='text-[#FDFF00]'></FaStar>
+                            <FaStar className='text-[#FDFF00]'></FaStar>
+                        </div>
+                        <div>
+                            <p className='text-base'>{review_one.review}</p>
+                            <h2 className='text-2xl font-bold mt-4'>{review_one.name}</h2>
+                            <img className='rounded-full w-12 mt-4' src={review_one.image} alt="" />
+                        </div>
                     </div>
-                    <div>
-                        <p className='text-base'>{review_one.review}</p>
-                        <h2 className='text-2xl font-bold mt-4'>{review_one.name}</h2>
-                        <img className='rounded-full w-12 mt-4' src={review_one.image} alt="" />
+                    <div className='lg:w-1/2 border p-6 mx-4 lg:mx-0 my-4 lg:ml-5 rounded-xl shadow-md' >
+                        <div>
+                            <div className='flex just mb-5'>
+                                <FaStar className='text-[#FDFF00]'></FaStar>
+                                <FaStar className='text-[#FDFF00]'></FaStar>
+                                <FaStar className='text-[#FDFF00]'></FaStar>
+                                <FaStar className='text-[#FDFF00]'></FaStar>
+                                <FaStar className='text-[#FDFF00]'></FaStar>
+                            </div>
+                            <div>
+                                <p className='text-base'>{review_two.review}</p>
+                                <h2 className='text-2xl font-bold mt-4'>{review_two.name}</h2>
+                                <img className='rounded-full w-12 mt-4' src={review_two.image} alt="" />
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div className='lg:w-1/2 border p-6 mx-4 lg:mx-0 my-4 lg:ml-5 rounded-xl shadow-md' >
-                    <div>
-                    <div className='flex just mb-5'>
-                        <FaStar className='text-[#FDFF00]'></FaStar>
-                        <FaStar className='text-[#FDFF00]'></FaStar>
-                        <FaStar className='text-[#FDFF00]'></FaStar>
-                        <FaStar className='text-[#FDFF00]'></FaStar>
-                        <FaStar className='text-[#FDFF00]'></FaStar>
-                    </div>
-                    <div>
-                        <p className='text-base'>{review_two.review}</p>
-                        <h2 className='text-2xl font-bold mt-4'>{review_two.name}</h2>
-                        <img className='rounded-full w-12 mt-4' src={review_two.image} alt="" />
-                    </div>
-                    </div>
-                </div>
-                </div>
+                <form onSubmit={handleReview} className='mt-10'>
+                    {
+                        user?.uid ?
+                            <div>
+
+                                <textarea name='customerReview' className="textarea textarea-info w-full" placeholder="Add Your Review" required></textarea>
+                                <button className='btn'>Submit</button>
+                            </div>
+                            :
+                            <span>Please login to add a review. <Link className='btn btn-link' to='/login'>Login...</Link></span>
+                    }
+                </form>
             </div>
         </div>
     );
