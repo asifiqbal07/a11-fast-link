@@ -43,15 +43,17 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end ">
-                <button className="btn bg-[#3078fb] border-0  hover:bg-white hover:text-[#3078fb] hover:border-[1px] hover:border-[#3078fb]">Get Started</button>
 
                 <ul className="menu menu-horizontal p-0 transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none">
                     <ul>
                         {
                             user?.uid ?
                                 <>
-                                    <Link to='/profile'>{user?.displayName}</Link>
+                                    
+                                    <button className=" btn btn-link  hover:bg-white hover:text-[#3078fb] hover:border-[1px] hover:border-[#3078fb]">My Reviews</button>
+                                    <button className=" btn btn-link  hover:bg-white hover:text-[#3078fb] hover:border-[1px] hover:border-[#3078fb]">Add Package</button>
                                     <button onClick={handleLogOut} className="btn bg-[#3078fb] border-0  hover:bg-white hover:text-[#3078fb] hover:border-[1px] hover:border-[#3078fb]">LogOut</button>
+                                    {/* <Link to='/profile'>{user?.displayName}</Link> */}
                                 </>
                                 :
                                 <>
