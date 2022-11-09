@@ -17,7 +17,21 @@ const Header = () => {
     const menuItems = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/packages'>Packages</Link></li>
-        <li><Link to='/login'>Login</Link></li>
+        <li>{
+            user?.uid ?
+                <>
+
+                    <Link to='/reviews'>My Reviews</Link>
+                    <Link to='/reviews'>Add Package</Link>
+                    <button onClick={handleLogOut} className="btn btn-ghost border-0 rounded-none hover:rounded-none">LogOut</button>
+                    {/* <Link to='/profile'>{user?.displayName}</Link> */}
+                </>
+                :
+                <>
+                    <Link to='/login'>Login</Link>
+                    <Link to='/signup'>Sign Up</Link>
+                </>
+        }</li>
     </>
     return (
         <div className="navbar bg-base-100 my-4">
@@ -44,27 +58,19 @@ const Header = () => {
             </div>
             <div className="navbar-end ">
 
-                <ul className="menu menu-horizontal p-0 transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none">
-                    <ul>
+                <ul className="menu menu-horizontal p-0 transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none mr-3">
+                    <ul >
                         {
                             user?.uid ?
-                                <>
-                                    
-                                    <button className=" btn btn-link  hover:bg-white hover:text-[#3078fb] hover:border-[1px] hover:border-[#3078fb]">My Reviews</button>
-                                    <button className=" btn btn-link  hover:bg-white hover:text-[#3078fb] hover:border-[1px] hover:border-[#3078fb]">Add Package</button>
-                                    <button onClick={handleLogOut} className="btn bg-[#3078fb] border-0  hover:bg-white hover:text-[#3078fb] hover:border-[1px] hover:border-[#3078fb]">LogOut</button>
-                                    {/* <Link to='/profile'>{user?.displayName}</Link> */}
-                                </>
+                                <Link className='font-semibold' to='/profile'>{user?.displayName}</Link>
                                 :
-                                <>
-                                    <Link to='/login'>Login</Link>
-                                    <Link to='/signup'>Sign Up</Link>
-                                </>
+                                <></>
                         }
-
                     </ul>
+                </ul>
+                <ul className="menu menu-horizontal p-0 transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none">
                     <Link to='/profile'>{user?.photoURL ?
-                        <img className='rounded-full h-8' src={user?.photoURL} alt="" />
+                        <img className='rounded-full h-10 shadow-md' src={user?.photoURL} alt="" />
                         :
                         <FaUser></FaUser>
                     }
