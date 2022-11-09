@@ -17,12 +17,13 @@ const Header = () => {
     const menuItems = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/packages'>Packages</Link></li>
+        <li><Link to='/blogs'>Blogs</Link></li>
         <li>{
             user?.uid ?
                 <>
 
                     <Link to='/reviews'>My Reviews</Link>
-                    <Link to='/reviews'>Add Package</Link>
+                    <Link to='/addpackage'>Add Package</Link>
                     <button onClick={handleLogOut} className="btn btn-ghost border-0 rounded-none hover:rounded-none">LogOut</button>
                     {/* <Link to='/profile'>{user?.displayName}</Link> */}
                 </>

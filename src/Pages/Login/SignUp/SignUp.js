@@ -58,44 +58,43 @@ const SignUp = () => {
         <div>
             <div className="hero min-h-screen bg-base-200">
                 <div className="">
+
                     <div className="text-center">
-                        <h1 className="text-5xl font-bold">Sign Up!</h1>
-                        <p className="py-6 lg:w-2/4 mx-auto">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi.</p>
+                    <h1 className="text-4xl font-bold">Create A Free <br /> <span className='text-[#3078fb]'>Account</span></h1>
                     </div>
-                    <div className="card w-full max-w-sm shadow-xl bg-base-100 mx-auto rounded-none ">
-                        <form onSubmit={handleSignUp} className="card-body">
+
+                    <div className="w-full shadow-xl bg-base-100 mx-auto rounded-none mt-10 p-4 ">
+                        <form onSubmit={handleSignUp} className="card-body p-0 w-80">
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Name</span>
+                                    <span className="label-text font-semibold">Name</span>
                                 </label>
-                                <input type="text" name='name' placeholder="your name" className="input input-bordered rounded-none" required />
+                                <input type="text" name='name' placeholder="your name" className="input input-bordered rounded-none bg-base-200" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Photo URL</span>
+                                    <span className="label-text font-semibold">Photo URL</span>
                                 </label>
-                                <input type="text" name='photoURL' placeholder="URL" className="input input-bordered rounded-none" />
+                                <input type="text" name='photoURL' placeholder="URL" className="input input-bordered rounded-none bg-base-200" />
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Email</span>
+                                    <span className="label-text font-semibold">Email</span>
                                 </label>
-                                <input type="email" name='email' placeholder="email" className="input input-bordered rounded-none" required />
+                                <input type="email" name='email' placeholder="email" className="input input-bordered rounded-none bg-base-200" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Password</span>
+                                    <span className="label-text font-semibold">Password</span>
                                 </label>
-                                <input type="password" name='password' placeholder="password" className="input input-bordered rounded-none" required />
+                                <input type="password" name='password' placeholder="password" className="input input-bordered rounded-none bg-base-200" required />
                                 <label className="label">
                                     <span className='text-red-600'>{error}</span>
                                 </label>
                             </div>
-                            <div className="form-control mt-6">
-                                <button className="btn btn-primary">Sign Up</button>
-                            </div>
+                            <button className=" rounded-none btn bg-[#3078fb] border-0  hover:bg-white hover:text-[#3078fb] hover:border-[1px] hover:border-[#3078fb] transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 duration-300">Sign up</button>
                         </form>
-                        <p className='text-center'>Already have an account <Link className='text-orange-600 font-bold' to='/login'>Log In</Link></p>
+                        <p className='text-center'>Already have an account <Link className='btn btn-link font-bold' to='/login'>Log In</Link></p>
                     </div>
                 </div>
             </div>
