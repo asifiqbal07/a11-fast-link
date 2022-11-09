@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../../context/AuthProvider';
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
     const [error, setError] = useState();
@@ -13,9 +13,21 @@ const Login = () => {
     const from = location.state?.from?.pathname || '/';
 
     const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
     
     const handleGoogleSignIn = () => {
         providerLogin(googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                toast.success('Login Successful');
+                navigate(from, { replace: true });
+            })
+            .catch(e => console.log(e))
+    }
+
+    const handleGithubSignIn = () => {
+        providerLogin(githubProvider)
             .then(result => {
                 const user = result.user;
                 console.log(user);
@@ -78,6 +90,7 @@ const Login = () => {
                             
                         </form>
                         <button onClick={handleGoogleSignIn}>Google Sign In</button>
+                        <button onClick={handleGithubSignIn}>GitHub Sign In</button>
                         <p className='text-center'>New to Fast Link <Link className='text-orange-600 font-bold' to='/signup'>Sign Up</Link></p>
                     </div>
                 </div>

@@ -27,6 +27,7 @@ const SignUp = () => {
                 setError('');
                 form.reset();
                 handleUpdateUserProfile(name, photoURL);
+                handleEmailVerification();
                 toast.success('Please verify your email address.')
                 navigate(from, { replace: true });
             })
@@ -42,6 +43,12 @@ const SignUp = () => {
             }
 
             updateUserProfile(profile)
+                .then(() => { })
+                .catch(e => console.error(e));
+        }
+
+        const handleEmailVerification = () => {
+            verifyEmail()
                 .then(() => { })
                 .catch(e => console.error(e));
         }

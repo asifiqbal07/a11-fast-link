@@ -46,11 +46,11 @@ const Header = () => {
                 <button className="btn bg-[#3078fb] border-0  hover:bg-white hover:text-[#3078fb] hover:border-[1px] hover:border-[#3078fb]">Get Started</button>
 
                 <ul className="menu menu-horizontal p-0 transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none">
-                    <Link to='/'>
+                    <ul>
                         {
                             user?.uid ?
                                 <>
-                                    <span>{user?.displayName}</span>
+                                    <Link to='/profile'>{user?.displayName}</Link>
                                     <button onClick={handleLogOut} className="btn bg-[#3078fb] border-0  hover:bg-white hover:text-[#3078fb] hover:border-[1px] hover:border-[#3078fb]">LogOut</button>
                                 </>
                                 :
@@ -60,7 +60,7 @@ const Header = () => {
                                 </>
                         }
 
-                    </Link>
+                    </ul>
                     <Link to='/profile'>{user?.photoURL ?
                         <img className='rounded-full h-8' src={user?.photoURL} alt="" />
                         :
