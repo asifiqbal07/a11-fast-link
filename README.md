@@ -1,6 +1,26 @@
-https://github.com/Porgramming-Hero-web-course/b6a11-service-review-client-side-asifiqbal07
+# Readme information for the assignment
 
-https://github.com/Porgramming-Hero-web-course/b6a11-service-review-server-side-asifiqbal07
+Project Name: Skill Up
+
+## Server Links - 
++ Server Github Link: https://github.com/Porgramming-Hero-web-course/b6a11-service-review-client-side-asifiqbal07
++ Client Side Link: https://github.com/Porgramming-Hero-web-course/b6a11-service-review-server-side-asifiqbal07
+
+## Special features of the website-
+
++ You can Login from 3 different ways. (Email-Pass, Google, GitHub)
++ You can Create your custom Packages.
++ You can add your review.
++ Page Helmet Added.
++ You can Show your Name and Email on the Header if you logged in.
+
+## List of technologies -
+
++ I used Tailwind CSS framework.
++ Server data working by Vercel.
++ Live site is running by Firebase Hosting.
++ Database connected with Mongodb.
++ Twt added.
 
 
 

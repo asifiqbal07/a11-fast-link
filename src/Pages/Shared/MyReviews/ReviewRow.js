@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { FaEdit } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const ReviewRow = ({ review, handleDelete }) => {
 
@@ -44,6 +46,7 @@ const ReviewRow = ({ review, handleDelete }) => {
                 <br />
             </td>
             <td>{price}</td>
+            <td><Link to='/profile'><button><FaEdit></FaEdit> Edit</button></Link></td>
         </tr>
     );
 };

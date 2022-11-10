@@ -22,7 +22,25 @@ const Login = () => {
         providerLogin(googleProvider)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                const currentUser = {
+                    email: user.email
+                }
+
+                // get jwt token
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        
+                        localStorage.setItem('fastLink-token', data.token);
+                        
+                    });
                 toast.success('Login Successful');
                 navigate(from, { replace: true });
             })
@@ -33,9 +51,28 @@ const Login = () => {
         providerLogin(githubProvider)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                const currentUser = {
+                    email: user.email
+                }
+
+                // get jwt token
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        
+                        localStorage.setItem('fastLink-token', data.token);
+                        
+                    });
                 toast.success('Login Successful');
                 navigate(from, { replace: true });
+                
             })
             .catch(e => console.log(e))
     }
@@ -49,10 +86,28 @@ const Login = () => {
         signIn(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                const currentUser = {
+                    email: user.email
+                }
+
+                // get jwt token
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        
+                        localStorage.setItem('fastLink-token', data.token);
+                        navigate(from, { replace: true });
+                    });
+                
                 form.reset();
                 setError('');
-                navigate(from, { replace: true });
                 toast.success('Login Successful');
             })
             .catch(error => {

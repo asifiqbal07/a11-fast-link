@@ -5,15 +5,24 @@ import useTitle from '../../../hooks/useTitle';
 import ReviewRow from './ReviewRow';
 
 const MyReviews = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     const [reviews, setReview] = useState([])
     useTitle('My Reviews')
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews?email=${user?.email}`)
-            .then(res => res.json())
+        fetch(`http://localhost:5000/reviews?email=${user?.email}`,{
+            headers:{
+                authorization: `Bearer ${localStorage.getItem('fastLink-token')}`
+            }
+        })
+        .then(res => {
+            if (res.status === 401 || res.status === 403) {
+                return logOut();
+            }
+            return res.json();
+        })
             .then(data => setReview(data))
-    }, [user?.email])
+    }, [user?.email , logOut])
 
     const handleDelete = id => {
         const proceed = window.confirm("Are you sure you want to delete the Review?")
@@ -48,7 +57,7 @@ const MyReviews = () => {
                                     <th>Package Name</th>
                                     <th>Review</th>
                                     <th>Price</th>
-                                    <th></th>
+                                    <th>Edit</th>
                                 </tr>
                             </thead>
                             <tbody>

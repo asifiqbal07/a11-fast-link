@@ -36,6 +36,7 @@ const AuthProvider = ({ children }) => {
     }
 
     const logOut = () => {
+        localStorage.removeItem('fastLink-token');
         setLoading(true);
         return signOut(auth);
     }
