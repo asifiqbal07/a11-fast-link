@@ -34,7 +34,7 @@ const AddPackages = () => {
 
         }
 
-        fetch('http://localhost:5000/packages', {
+        fetch('https://fast-link-server.vercel.app/packages', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

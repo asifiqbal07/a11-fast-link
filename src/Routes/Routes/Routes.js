@@ -51,7 +51,7 @@ export const routes = createBrowserRouter([
             {
                 path: '/packages',
                 element: <Packages></Packages>,
-                loader: () => fetch('http://localhost:5000/packages')
+                loader: () => fetch('https://fast-link-server.vercel.app/packages')
             },
             {
                 path: '/maintenance',
@@ -60,7 +60,7 @@ export const routes = createBrowserRouter([
             {
                 path: '/packages/:id',
                 element:<PackageDetails></PackageDetails>,
-                loader: ({params}) => fetch(`http://localhost:5000/packages/${params.id}`),             
+                loader: ({params}) => fetch(`https://fast-link-server.vercel.app/packages/${params.id}`),             
             },
         ]
     },

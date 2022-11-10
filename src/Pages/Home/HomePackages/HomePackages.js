@@ -5,7 +5,7 @@ import HomePackage from './HomePackage';
 const HomePackages = () => {
     const [packages, setPackages] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/packages')
+        fetch('https://fast-link-server.vercel.app/packages')
             .then(res => res.json())
             .then(data => setPackages(data))
     }, [])

@@ -9,7 +9,7 @@ const ReviewRow = ({ review, handleDelete }) => {
     const { _id, serviceName, price, customerReview, customer, soloPackage } = review;
 
         useEffect(()=>{
-            fetch(`http://localhost:5000/packages/${soloPackage}`)
+            fetch(`https://fast-link-server.vercel.app/packages/${soloPackage}`)
             .then(res=>res.json())
             .then(data => setReviewPackage(data))
         },[soloPackage])
