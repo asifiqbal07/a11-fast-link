@@ -23,9 +23,8 @@ const Profile = () => {
                 <div className="">
                     <div className="text-center">
                         <h1 className="text-5xl font-bold">User Profile</h1>
-                        <p className="py-6 lg:w-2/4 mx-auto">Provident cupiditate voluptatem et in. </p>
                     </div>
-                    <div className="card w-full max-w-sm shadow-xl bg-base-100 mx-auto rounded-none ">
+                    <div className="card w-full shadow-xl bg-base-100 mx-auto rounded-none mt-5">
                         <form onSubmit={handleProfile} className="card-body">
                             <div className="form-control">
                                 <label className="label">
@@ -56,7 +55,6 @@ const Profile = () => {
                                 <button className="btn btn-primary">Submit</button>
                             </div>
                         </form>
-                        <p className='text-center'>Already have an account <Link className='text-orange-600 font-bold' to='/login'>Log In</Link></p>
                     </div>
                 </div>
             </div>

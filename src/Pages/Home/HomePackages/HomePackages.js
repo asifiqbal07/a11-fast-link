@@ -9,8 +9,10 @@ const HomePackages = () => {
             .then(res => res.json())
             .then(data => setPackages(data))
     }, [])
+
+    
     return (
-        <div id='home-services' className=' grid lg:grid-cols-3 gap-20 md:grid-cols-2'>
+        <div id='home-services' className=' grid lg:grid-cols-3 gap-20 md:grid-cols-2 m-5 lg:m-0'>
             <div className="card card-compact bg-base-100 ">
                 <div className="card-body">
                     <h4 className="card-title text-[#3078fb]">MY SERVICES</h4>
@@ -21,7 +23,7 @@ const HomePackages = () => {
             </div>
             
                 {
-                    packages.slice(2,5).map(homePack => <HomePackage
+                    packages.slice(-3).map(homePack => <HomePackage
                         key={homePack._id}
                         homePack={homePack}
                     ></HomePackage>)
