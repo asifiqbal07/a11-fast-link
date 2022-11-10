@@ -49,10 +49,12 @@ const PackageReview = ({ packageDetails }) => {
     }
 
     useEffect(() => {
-        fetch('http://localhost:5000/reviews')
+        fetch(`http://localhost:5000/reviews`)
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [])
+
+console.log(reviews);
 
     return (
         <div>
@@ -76,7 +78,7 @@ const PackageReview = ({ packageDetails }) => {
                                     <textarea name='customerReview' className="textarea textarea-info w-full border-[#3078fb]" placeholder="Add Your Review" required></textarea>
                                 </div>
                                 <div className=''>
-                                <button className="btn bg-[#3078fb] border-0  hover:bg-white hover:text-[#3078fb] hover:border-[1px] hover:border-[#3078fb] transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 duration-300">Post Review</button>
+                                    <button className="btn bg-[#3078fb] border-0  hover:bg-white hover:text-[#3078fb] hover:border-[1px] hover:border-[#3078fb] transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 duration-300">Post Review</button>
                                 </div>
                             </div>
                             :

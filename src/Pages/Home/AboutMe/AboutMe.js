@@ -5,7 +5,7 @@ import net from '../../../assets/net.jpg'
 const AboutMe = () => {
     return (
         <div id='home-about'>
-            <div className="hero bg-base-200 my-20">
+            <div className="hero bg-base-200 my-32">
                 <div className="hero-content flex-col lg:flex-row">
                     <div className='lg:w-1/2 relative'>
                         <img src={about} className="lg:w-4/5 h-full rounded-lg shadow-2xl" alt='' />

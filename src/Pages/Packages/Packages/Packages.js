@@ -2,9 +2,11 @@ import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Package from '../Package/Package';
 import banner from '../../../assets/Packages Banner.jpg'
+import useTitle from '../../../hooks/useTitle';
 
 const Packages = () => {
     const allPackages = useLoaderData();
+    useTitle('Packages')
     return (
         <div className='mx-6 lg:mx-0 mb-20 mt-10'>
             <div className='lg:flex items-center justify-between mb-6'>

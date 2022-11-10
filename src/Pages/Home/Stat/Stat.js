@@ -3,10 +3,10 @@ import React from 'react';
 const Stat = () => {
     return (
         <div>
-            <div className="stats shadow w-full mb-16">
+            <div className="stats shadow w-full my-28 mx-auto">
 
                 <div className="stat place-items-center">
-                    <div className="stat-title">Total Service Taken</div>
+                    <div className="stat-title">Service Taken</div>
                     <div className="stat-value">1K</div>
                 </div>
 

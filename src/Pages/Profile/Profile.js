@@ -1,12 +1,13 @@
 import React, { useContext, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
+import useTitle from '../../hooks/useTitle';
 
 const Profile = () => {
 
     const { user } = useContext(AuthContext);
     const [name, setName] = useState(user.displayName);
     const photoURLRef = useRef(user.photoURL);
+    useTitle('Profile')
 
     const handleProfile = event => {
         event.preventDefault();

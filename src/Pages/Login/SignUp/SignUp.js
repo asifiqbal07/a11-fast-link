@@ -2,12 +2,14 @@ import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider';
 import toast from 'react-hot-toast';
+import useTitle from '../../../hooks/useTitle';
 
 const SignUp = () => {
     const [error, setError] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
     const { createUser, updateUserProfile, verifyEmail } = useContext(AuthContext);
+    useTitle('SignUp')
 
     const from = location.state?.from?.pathname || '/';
 
